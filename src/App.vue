@@ -19,4 +19,5 @@ export default {
 
 <style>
 @import './assets/css/base.css';
+#app h2{margin: 0;}
 </style>
