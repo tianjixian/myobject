@@ -1,20 +1,22 @@
 <template>
   <div id="app">
-    <h2>已经初始化111</h2>
+     <router-view></router-view>
+    <maintabbar></maintabbar>
+  
   </div>
 </template>
 
 <script>
-
+import maintabbar from '@/components/content/maintabbar'
 
 export default {
   name: 'App',
   components: {
-    
+    maintabbar
   }
 }
 </script>
 
 <style>
-body{margin: 0; padding: 0;}
+@import './assets/css/base.css';
 </style>
