@@ -2,10 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // 懒加载导入组件
-const home= () => import('@/components/content/pages/home/home.vue');
-const sort= () => import('@/components/content/pages/sort/sort.vue');
-const car= () => import('@/components/content/pages/car/car.vue');
-const profile= () => import('@/components/content/pages/profile/profile.vue');
+const home= () => import('@/views/home/home.vue');
+const sort= () => import('@/views/sort/sort.vue');
+const car= () => import('@/views/car/car.vue');
+const profile= () => import('@/views/profile/profile.vue');
 
 
 Vue.use(Router);
