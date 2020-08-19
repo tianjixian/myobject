@@ -1,13 +1,12 @@
 <template>
-  <swiper class="swiper" :options="swiperOption">
-    <swiper-slide>Slide 1</swiper-slide>
+  <Swiper class="swiper" :options="swiperOption">
+    <swiper-slide>222222222222</swiper-slide>
     <swiper-slide>Slide 2</swiper-slide>
     <swiper-slide>Slide 3</swiper-slide>
     <swiper-slide>Slide 4</swiper-slide>
     <swiper-slide>Slide 5</swiper-slide>
-    <div class="swiper-pagination" slot="pagination">
-    </div>
-  </swiper>
+    <div class="swiper-pagination" slot="pagination"></div>
+  </Swiper>
 </template>
 
 <script>
@@ -17,7 +16,8 @@ import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 
 export default {
-    name: 'mainswiper',
+    name: 'swiper-example-pagination',
+    title: 'Pagination',
     components: {
         Swiper,
         SwiperSlide
@@ -27,12 +27,16 @@ export default {
         swiperOption: {
           pagination: {
             el: '.swiper-pagination',
+            clickable: true,
           },
           autoplay: {
-　　　　    delay: 3000,
-　　　　    disableOnInteraction: false // 手动切换之后继续自动轮播
+　　　　    delay: 1000,  
+          
+          
 　　      },
-loop: true,
+          spaceBetween:30,
+          loop: true,
+          
         }
       }
     }
