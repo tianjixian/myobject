@@ -2,34 +2,29 @@
   <div id="app">
      <router-view></router-view>
      <maintabbar></maintabbar>
-     <div>{{result}}</div>
+    
   
   </div>
 </template>
 
 <script>
 import maintabbar from '@/components/content/maintabbar'
-import {request} from '@/network/request.js'
+
 export default {
+  //名称
   name: 'App',
+  //组件
   components: {
     maintabbar
   },
+  //数据
   data(){
     return{
-      result:''
+      
     }
   },
+  //钩子函数（组件创建成功后执行）
   created(){
-    // 数据请求
-   request({
-     url:'/home/multidata',
-     
-   },res=>{
-     this.result=res;
-   },err=>{
-     alert("数据请求失败");
-   })
   
   }
     
