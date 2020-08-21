@@ -1,18 +1,22 @@
 <template>
   <Swiper ref="mySwiper" :options="swiperOptions">
-    <swiper-slide v-for="(item,index) in bannerimg" :key='index'><a :href="item.link"><img :src="item.image" alt=""></a></swiper-slide>
+    <swiper-slide v-for="(item,index) in images" :key='index'><a :href="item.link"><img :src="item.image" alt=""></a></swiper-slide>
     
     <div class="swiper-pagination" slot="pagination"></div>
   </Swiper>
 </template>
 
 <script>
-  import {request} from '@/network/request.js'
  import { Swiper, SwiperSlide } from 'vue-awesome-swiper'  
  import 'swiper/css/swiper.css'
 
   export default {
     name: 'mainswiper',
+    props:{
+      images:{
+        type:Array
+      }
+    },
     components: {
       Swiper,
       SwiperSlide
@@ -26,7 +30,11 @@
             el: '.swiper-pagination'
           },
           loop:true,
-          autoplay:true,
+          autoplay: {
+            delay: 3000,
+            stopOnLastSlide: false,
+            disableOnInteraction: false,
+          },
           initialSlide :1, 
           
         },
@@ -40,22 +48,12 @@
           return this.$refs.mySwiper.swiper;  
         }  
     }, 
-     //生命周期（组件创建成功后执行）
-    created(){
-      request({
-        url:'/home/multidata'
-      }).then(res=>{
-        console.log(res)
-        this.bannerimg=res.data.data.banner.list
-      }).catch(err=>{
-        alert('数据请求失败')
-      })
-    }
+   
   }
 </script>
 
 <style scoped>
-.swiper-container{ width: 100%; height: 250px; overflow: hidden;}
+.swiper-container{ width: 100%; height: 230px; overflow: hidden; margin-top: 44px;}
 .swiper-container img{ width: 100%; height: 100%;}
 </style>
 
