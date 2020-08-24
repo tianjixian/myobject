@@ -20,7 +20,8 @@ export default {
     },
     methods:{
         onclass(a){
-            this.ison=a
+            this.ison=a;
+            this.$emit("showGoods",a);
         }   
     }
    
@@ -29,9 +30,8 @@ export default {
 </script>
 
 <style scoped>
-.topnav{ height: 60px;line-height: 60px; display: flex;padding: 0 10%;  text-align: center; background: white; position: sticky;}
+.topnav{ height: 60px;line-height: 60px; display: flex;padding: 0 10%;  text-align: center; background: white;  position: sticky; top: 44px;}
 .topnav div{flex: 1;justify-content: center; }
-.topnav div a{color:black ; font-size: 16px; text-decoration: none;}
-.topnav .onclass{ color: red;}
-
+.topnav div a{color:black ; font-size: 18px; text-decoration: none;}
+.topnav .onclass{ color: #ff699c; border-bottom: 1px solid #ff699c; padding:0 5px 8px 5px;}
 </style>

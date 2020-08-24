@@ -22,7 +22,6 @@ a:hover{color:#1c5bb8;}/*颜色根据psd主色调决定，比如很多都是蓝�
 .hide{display:none;}
 .block{display:block;}
 textarea,input{font-family:微软雅黑;}
-.wrapper{ margin: 0 auto; width: 1100px;}
 
 /*命名的语义化---正常页面的几部分如下：header nav section+aside footer */
 /*flex布局*/

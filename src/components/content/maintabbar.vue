@@ -1,5 +1,5 @@
 <template>
-  <tabbar01>
+  <tabbar01 class="maintabbar">
          <tabbar02 path="/home" oncolor="green"> 
             <img slot="img" src="@/assets/img/q1.png" alt="">
              <img slot="onimg" src="@/assets/img/q9.png" alt="">
@@ -38,4 +38,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style >
+.maintabbar{z-index: 100;}
 </style>

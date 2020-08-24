@@ -6,9 +6,13 @@ export function home01(){
     })
 }
 
-export function home02(){
+export function home02(type,page){
     return request ({
-        url:'/home/multidata'
+        url:'/home/data',
+        params:{
+            type,
+            page
+        }
     })
 }
 

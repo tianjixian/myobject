@@ -27,6 +27,6 @@ export default {
 <style scoped>
 .homechild01{display: flex; margin-top: 20px;}
 .homechild01 li{flex: 1; text-align: center;}
-.homechild01 li a{display: inline-block; margin-top: 5px; font-size: 16px; color: black;}
+.homechild01 li a{display:block; margin-top: 5px; font-size: 16px; color: black;}
 .homechild01 li img{width: 50px; height: 50px;}
 </style>
