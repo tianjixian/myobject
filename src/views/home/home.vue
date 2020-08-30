@@ -46,6 +46,7 @@ export default {
           isShowBacktop:false  
       }
   },
+  // 组件注册
   components:{
     navbar,
     mainswiper,
@@ -65,13 +66,20 @@ export default {
     this.home02("sell")
     
   },
+  // 一般在初始化页面完成后，再对dom节点进行相关操作
   mounted(){
-    
+    this.$bus.$on('imgload01',()=>{
+       this.$refs.scroll.scroll.refresh()
+       console.log("图片加载执行refresh函数")
+    })
   },
   computed:{
     showmainGoods(){
       return this.goods[this.goodsOnType].list
     }
+    
+    
+
   },
   methods:{
     //事件署处理-----------------------------
@@ -83,8 +91,7 @@ export default {
     },
     loadmore(){
       this.home02(this.goodsOnType)
-      this.$refs.scroll.scroll.refresh()
-      console.log("1")
+      
     },
     //网络请求处理----------------------------------------------
     //请求bnnner以及homechild01数据
