@@ -1,11 +1,12 @@
 <template>
   <div class="home">
     <navbar class="navbarHome"><div slot="center">全民购物街</div></navbar>
+     <topnav class="topnavOn" ref="topnav02" :navtitle="nav" v-show="showtopnav"   @showGoods="showGoods"></topnav>
     <scroll class="scrollcon" ref="scroll" :probeType="3" :click="true" :pullUpLoad="true" @showBacktop="showBacktop" @loadmore="loadmore" >
       <mainswiper :images="bannerimg"></mainswiper>
       <homechild01 :recommend="recommend"></homechild01>
       <homechild02></homechild02>
-      <topnav :navtitle="nav"  @showGoods="showGoods"></topnav>
+      <topnav ref="topnav" :navtitle="nav"  @showGoods="showGoods"></topnav>
       <goodlist :goodslist="showmainGoods"></goodlist>
     </scroll>
     <backtop ref="backtop" @click.native="backtop" v-show="isShowBacktop"></backtop>
@@ -43,7 +44,10 @@ export default {
             "sell":{page:1,list:[]}
           },
           goodsOnType:'pop',
-          isShowBacktop:false  
+          isShowBacktop:false,
+          offsetTop:0,
+          showtopnav:false
+
       }
   },
   // 组件注册
@@ -72,6 +76,9 @@ export default {
        this.$refs.scroll.scroll.refresh()
        console.log("图片加载执行refresh函数")
     })
+    this.offsetTop=this.$refs.topnav.$el.offsetTop
+    
+    
   },
   computed:{
     showmainGoods(){
@@ -88,9 +95,11 @@ export default {
     },
     showBacktop(position){
       this.isShowBacktop=-position.y>1000
+      this.showtopnav=(-position.y)>this.offsetTop
     },
     loadmore(){
       this.home02(this.goodsOnType)
+      console.log("加载更多")
       
     },
     //网络请求处理----------------------------------------------
@@ -119,6 +128,8 @@ export default {
         case 1: this.goodsOnType="new";break; 
         case 2: this.goodsOnType="sell";break; 
       }
+      this.$refs.topnav02.ison=index
+      this.$refs.topnav.ison=index
     }
 
   }
@@ -132,4 +143,5 @@ export default {
 .navbarHome{ background:#ff699c;}
 .scrollcon{ width: 100%; position: absolute; top: 44px; bottom: 49px;  overflow: hidden; }
 /* height: calc(100% - 98px); */
+.topnavOn{ position: relative; z-index: 99;}
 </style>
