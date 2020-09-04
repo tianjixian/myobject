@@ -74,7 +74,7 @@ export default {
   mounted(){
     this.$bus.$on('imgload01',()=>{
        this.$refs.scroll&&this.$refs.scroll.scroll.refresh()
-       console.log("图片加载执行refresh函数")
+      //  console.log("图片加载执行refresh函数")
     })
     this.offsetTop=this.$refs.topnav.$el.offsetTop
     
@@ -132,6 +132,16 @@ export default {
       this.$refs.topnav.ison=index
     }
 
+  },
+  // 离开组件的三个操作区
+  destroyed(){
+    console.log("销毁首页")
+  },
+  activated(){
+     console.log("进入首页执行的记录")
+  },
+  deactivated(){
+    console.log("离开首页的记录")
   }
   
 }
