@@ -73,7 +73,7 @@ export default {
   // 一般在初始化页面完成后，再对dom节点进行相关操作
   mounted(){
     this.$bus.$on('imgload01',()=>{
-       this.$refs.scroll.scroll.refresh()
+       this.$refs.scroll&&this.$refs.scroll.scroll.refresh()
        console.log("图片加载执行refresh函数")
     })
     this.offsetTop=this.$refs.topnav.$el.offsetTop
