@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <navbar class="navbarHome"><div slot="center">全民购物街</div></navbar>
-     <topnav class="topnavOn" ref="topnav02" :navtitle="nav" v-show="showtopnav"   @showGoods="showGoods"></topnav>
+    <topnav class="topnavOn" ref="topnav02" :navtitle="nav" v-show="showtopnav"   @showGoods="showGoods"></topnav>
     <scroll class="scrollcon" ref="scroll" :probeType="3" :click="true" :pullUpLoad="true" @showBacktop="showBacktop" @loadmore="loadmore" >
       <mainswiper :images="bannerimg"></mainswiper>
       <homechild01 :recommend="recommend"></homechild01>
@@ -69,6 +69,7 @@ export default {
     this.home02("new")
     this.home02("sell")
     
+    
   },
   // 一般在初始化页面完成后，再对dom节点进行相关操作
   mounted(){
@@ -76,7 +77,8 @@ export default {
        this.$refs.scroll&&this.$refs.scroll.scroll.refresh()
       //  console.log("图片加载执行refresh函数")
     })
-    this.offsetTop=this.$refs.topnav.$el.offsetTop
+
+   
     
     
   },
@@ -89,13 +91,15 @@ export default {
 
   },
   methods:{
-    //事件署处理-----------------------------
+    //事件处理-----------------------------
     backtop(){
       this.$refs.scroll.scroll.scrollTo(0,0,500);
     },
     showBacktop(position){
+      this.offsetTop=this.$refs.topnav.$el.offsetTop
       this.isShowBacktop=-position.y>1000
       this.showtopnav=(-position.y)>this.offsetTop
+      
     },
     loadmore(){
       this.home02(this.goodsOnType)
@@ -153,5 +157,5 @@ export default {
 .navbarHome{ background:#ff699c;}
 .scrollcon{ width: 100%; position: absolute; top: 44px; bottom: 49px;  overflow: hidden; }
 /* height: calc(100% - 98px); */
-.topnavOn{ position: relative; z-index: 99;}
+.topnavOn{ position: relative;z-index: 99; }
 </style>
