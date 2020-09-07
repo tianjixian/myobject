@@ -35,7 +35,8 @@
             stopOnLastSlide: false,
             disableOnInteraction: false,
           },
-          initialSlide :1, 
+          initialSlide :1,
+
           
         },
        
