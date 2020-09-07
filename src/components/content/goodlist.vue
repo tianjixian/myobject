@@ -1,7 +1,7 @@
 <template>
   <div class="goodlist">
-      <div class="gooditeam01" v-for="(item,index) in goodslist" :key='index'>
-          <a :href="item.link">
+      <div class="gooditeam01" v-for="(item,index) in goodslist" :key='index'  @click="indetail(index)">
+          <a target="_blank">
             <img :src="item.show.img" alt="" @load="imgload">
             <div class="gooditeam02">
                 <p>{{item.title}}</p>
@@ -25,6 +25,10 @@ export default {
         imgload(){
             this.$bus.$emit('imgload01')
             
+        },
+        indetail(index){
+            this.$router.push("/detail/"+this.goodslist[index].iid)
+           
         }
         
     }
@@ -34,6 +38,7 @@ export default {
 <style scoped>
 .goodlist{ display: flex; width: 100%;flex-wrap: wrap; justify-content: space-around;padding: 2px; }
 .gooditeam01{width: 48%; }
+.gooditeam01 a{ display: block;}
 .gooditeam01 img{ width: 100%;}
 .gooditeam02{ text-align: center;}
 .gooditeam02 p{ display: block; font-size: 16px; height: 30px; line-height: 30px; white-space: nowrap;
