@@ -138,14 +138,14 @@ export default {
 
   },
   // 离开组件的三个操作区
+  //1销毁首页
   destroyed(){
-    console.log("销毁首页")
   },
+  //2进入首页执行的记录
   activated(){
-     console.log("进入首页执行的记录")
   },
+  //3离开首页的记录
   deactivated(){
-    console.log("离开首页的记录")
   }
   
 }
