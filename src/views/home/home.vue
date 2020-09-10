@@ -46,7 +46,8 @@ export default {
           goodsOnType:'pop',
           isShowBacktop:false,
           offsetTop:0,
-          showtopnav:false
+          showtopnav:false,
+          scrollleave:-44
 
       }
   },
@@ -140,12 +141,17 @@ export default {
   // 离开组件的三个操作区
   //1销毁首页
   destroyed(){
+    
   },
   //2进入首页执行的记录
   activated(){
+    this.$refs.scroll.scroll.scrollTo(0,this.scrollleave,0)
+     this.$refs.scroll.scroll.refresh()
+    
   },
   //3离开首页的记录
   deactivated(){
+    this.scrollleave=this.$refs.scroll.scroll.y
   }
   
 }
