@@ -11,6 +11,6 @@ export default {
 </script>
 
 <style scoped>
-.week{ width: 100%; height: 300px;}
+.week{ width: 100%; height: 250px;}
 .week img{width: 100%;  height: 100%;}
 </style>

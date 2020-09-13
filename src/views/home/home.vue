@@ -99,7 +99,7 @@ export default {
     showBacktop(position){
       this.offsetTop=this.$refs.topnav.$el.offsetTop
       this.isShowBacktop=-position.y>1000
-      this.showtopnav=(-position.y)>this.offsetTop
+      this.showtopnav=(-position.y)>this.offsetTop+50
       
     },
     loadmore(){
