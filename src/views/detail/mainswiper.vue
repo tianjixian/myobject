@@ -1,6 +1,6 @@
 <template>
   <Swiper ref="mySwiper" :options="swiperOptions">
-    <swiper-slide v-for="(item,index) in images" :key='index'><a :href="item.link" ><img :src="item.image?item.image:item" alt=""></a></swiper-slide>
+    <swiper-slide   v-for="(item,index) in images.slice(0,4)"  :key='index'><a  :href="item.link" ><img :src="item.image?item.image:item" alt=""></a></swiper-slide>
     
     <div class="swiper-pagination" slot="pagination"></div>
   </Swiper>
@@ -35,16 +35,18 @@
             stopOnLastSlide: false,
             disableOnInteraction: false,
           },
+          slidesPerView :1,
           initialSlide :1,
+          
 
           
         },
        
       }
     },
+    
     //定义这个sweiper对象  
     computed: {  
-
         swiper() {  
           return this.$refs.mySwiper.swiper;  
         }  
@@ -54,8 +56,8 @@
 </script>
 
 <style scoped>
-.swiper-container{ width: 100%; height: 230px; overflow: hidden; margin-top: 44px;}
-.swiper-container img{ width: 100%; height: 100%;}
+.swiper-container{ width: 100%; height: 300px; overflow: hidden; margin-top: 44px;}
+.swiper-container img{ width: 100%; height: auto;}
 </style>
 
 

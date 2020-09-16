@@ -1,6 +1,6 @@
 <template>
-  <div class="detail">
-      <navbar>
+  <div class="cf">
+      <navbar class="cf">
          <a class="navbarL" @click="navbarL" slot="left">＜</a>
          <div class="navbarC" slot='center'>
              <a :class="{navbarCon:index==navbarCon}" v-for='(iteam,index) in navbar' :key='index' @click="navbarCon02(index)">{{iteam}}</a>
@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style scoped>
-.navbarL{display: block; font-size: 28px; color: black; text-align: center;font-weight: 100;}
+.navbarL{display: block; font-size: 28px; color:#bdc3c7; text-align: center;font-weight: 100; }
 .navbarC{display: flex;}
 .navbarC a{flex: 1; font-size: 16px; color: black;}
 .navbarC .navbarCon{color:#ff699c;}
