@@ -33,7 +33,7 @@ export default {
         //根据iid请求对应数据
         detail01(this.id).then(res=>{
             this.banner=res.data.result.itemInfo.topImages
-            console.log(res);
+            
         })
 
     },
