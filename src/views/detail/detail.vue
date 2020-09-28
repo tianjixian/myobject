@@ -3,6 +3,7 @@
       <navbarD></navbarD>
       <scroll class="scrollcon" ref="scroll" :probeType="3" :click="true" :pullUpLoad="true" @showBacktop="showBacktop" @loadmore="loadmore" >
           <mainswiper :images="banner"></mainswiper>
+          <titleD :num="num"></titleD>
           <div>{{id}}</div>
       </scroll>
   </div>
@@ -12,6 +13,7 @@
 import navbarD from '@/views/detail/navbarD.vue';
 import scroll from '@/components/common/scroll.vue'
 import mainswiper from '@/views/detail/mainswiper.vue';
+import titleD from '@/views/detail/titleD.vue';
 import {detail01} from '@/network/detail.js'
 
 export default {
@@ -20,19 +22,24 @@ export default {
         return{
            id:null,
            banner:[],
+           num:[]
         }
     },
     components:{
         navbarD,
         scroll,
-        mainswiper
+        mainswiper,
+        titleD
     },
     created(){
         // 获取iid
         this.id=this.$route.params.id
         //根据iid请求对应数据
         detail01(this.id).then(res=>{
+            // 轮播图数据获取
             this.banner=res.data.result.itemInfo.topImages
+            this.num=res.data.result.columns
+            console.log(this.num)
             
         })
 
