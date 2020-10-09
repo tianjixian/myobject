@@ -1,6 +1,6 @@
 <template>
   <Swiper ref="mySwiper" :options="swiperOptions">
-    <swiper-slide   v-for="(item,index) in images.slice(0,4)"  :key='index'><a  :href="item.link" ><img :src="item.image?item.image:item" alt=""></a></swiper-slide>
+    <swiper-slide   v-for="(item,index) in images.slice(0,4)"  :key='index'><a  :href="item.link" ><img :src="item" alt=""></a></swiper-slide>
     
     <div class="swiper-pagination" slot="pagination"></div>
   </Swiper>
@@ -14,7 +14,10 @@
     name: 'mainswiper',
     props:{
       images:{
-        type:Array
+        type:Array,
+        default(){
+          return []
+        }
       }
     },
     components: {

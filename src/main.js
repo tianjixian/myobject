@@ -11,5 +11,3 @@ new Vue({
 }).$mount('#app');
 
 
-
-

@@ -2,8 +2,8 @@
   <div class="detail">
       <navbarD></navbarD>
       <scroll class="scrollcon" ref="scroll" :probeType="3" :click="true" :pullUpLoad="true" @showBacktop="showBacktop" @loadmore="loadmore" >
-          <mainswiper :images="banner"></mainswiper>
-          <titleD :num="num"></titleD>
+          <mainswiper :images="goodsInfo.topImages"></mainswiper>
+          <titleD :goodsInfo02="goodsInfo"></titleD>
           <div>{{id}}</div>
       </scroll>
   </div>
@@ -14,15 +14,14 @@ import navbarD from '@/views/detail/navbarD.vue';
 import scroll from '@/components/common/scroll.vue'
 import mainswiper from '@/views/detail/mainswiper.vue';
 import titleD from '@/views/detail/titleD.vue';
-import {detail01} from '@/network/detail.js'
+import {detail01,goods} from '@/network/detail.js'
 
 export default {
     name:'detail',
     data(){
         return{
            id:null,
-           banner:[],
-           num:[]
+           goodsInfo:{},
         }
     },
     components:{
@@ -36,12 +35,14 @@ export default {
         this.id=this.$route.params.id
         //根据iid请求对应数据
         detail01(this.id).then(res=>{
-            // 轮播图数据获取
-            this.banner=res.data.result.itemInfo.topImages
-            this.num=res.data.result.columns
-            console.log(this.num)
+            // 中转
+            const data=res.data.result
+            // 获取封装成一个对象goods的数据
+            this.goodsInfo=new goods(data.itemInfo,data.columns,data.shopInfo.services)
+            console.log(this.goodsInfo.itemInfo)
             
         })
+        
 
     },
     methods:{

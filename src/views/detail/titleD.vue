@@ -1,8 +1,6 @@
 <template>
     <div class="title">
-        <div class="title01">
-            <a v-for="(item,index) in num" :key="index">{{item}}</a>
-        </div>
+        <div class="title01">{{goodsInfo02.desc}}</div>
     </div>
 </template>
 
@@ -10,23 +8,25 @@
 export default {
     name:"titleD",
     props:{
-        num:{
-            type:Array
+        goodsInfo02:{
+            type:Object
         }
     },
     data(){
         return {
-
+            title:''
         }
     },
+    created(){
+        
+    },
     updated(){
-        console.log(this.num)
+      
     }
 
 }
 </script>
 
 <style scoped>
-.title01{width: 100%; display: flex; padding: 0px 30px;}
-.title01 a{flex: 1;}
+.title01{width: 100%;  font-size: 14px;}
 </style>
