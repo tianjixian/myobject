@@ -5,12 +5,6 @@
          <mainswiper :images="goodsInfo.topImages"></mainswiper>
           <titleD :goodsInfo02="goodsInfo"></titleD>
       </scroll>
-      <!-- <scroll style="height:200px;overflow:hidden">
-     <mainswiper :images="goodsInfo.topImages"></mainswiper>
-          <titleD :goodsInfo02="goodsInfo"></titleD>
-          <div>{{id}}</div>
-    </scroll> -->
-      
   </div>
 </template>
 
@@ -43,8 +37,8 @@ export default {
             // 中转
             const data=res.data.result
             // 获取封装成一个对象goods的数据
-            this.goodsInfo=new goods(data.itemInfo,data.columns,data.shopInfo.services)
-            console.log(this.goodsInfo.services)
+            this.goodsInfo=new goods(data.itemInfo,data.columns,data.shopInfo)
+            console.log(data.shopInfo)
             
         })
        
