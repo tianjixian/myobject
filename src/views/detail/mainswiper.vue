@@ -59,7 +59,7 @@
 </script>
 
 <style scoped>
-.swiper-container{ width: 100%; height: 300px; overflow: hidden; margin-top: 44px;}
+.swiper-container{ width: 100%; height: 300px; overflow: hidden; margin-top: 0px;}
 .swiper-container img{ width: 100%; height: auto;}
 </style>
 

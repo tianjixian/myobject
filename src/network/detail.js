@@ -13,7 +13,9 @@ export function detail01(iid){
 export class goods{
     constructor(itemInfo,columns,services){
         this.topImages=itemInfo.topImages;
-        this.desc=itemInfo.desc;
+        this.title=itemInfo.title;
+        this.highNowPrice=itemInfo.highNowPrice;
+        this.highPrice=itemInfo.highPrice;
         this.itemInfo=itemInfo;
         this.columns=columns;
         this.services=services;

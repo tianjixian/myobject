@@ -16,7 +16,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style >
-.navbar{display:flex;height: 44px;line-height: 44px; position: fixed; top: 0; left: 0; right: 0; z-index: 10;}
+.navbar{width: 100%; display:flex;height: 44px;line-height: 44px; position: fixed; top: 0; left: 0; right: 0; z-index: 10; background: white;}
 .center{flex: 1; text-align: center; font-size: 16px; color: white;}
 .left,.right{ width: 60px;}
 </style>

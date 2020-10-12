@@ -2,10 +2,15 @@
   <div class="detail">
       <navbarD></navbarD>
       <scroll class="scrollcon" ref="scroll" :probeType="3" :click="true" :pullUpLoad="true" @showBacktop="showBacktop" @loadmore="loadmore" >
-          <mainswiper :images="goodsInfo.topImages"></mainswiper>
+         <mainswiper :images="goodsInfo.topImages"></mainswiper>
+          <titleD :goodsInfo02="goodsInfo"></titleD>
+      </scroll>
+      <!-- <scroll style="height:200px;overflow:hidden">
+     <mainswiper :images="goodsInfo.topImages"></mainswiper>
           <titleD :goodsInfo02="goodsInfo"></titleD>
           <div>{{id}}</div>
-      </scroll>
+    </scroll> -->
+      
   </div>
 </template>
 
@@ -39,15 +44,16 @@ export default {
             const data=res.data.result
             // 获取封装成一个对象goods的数据
             this.goodsInfo=new goods(data.itemInfo,data.columns,data.shopInfo.services)
-            console.log(this.goodsInfo.itemInfo)
+            console.log(this.goodsInfo.services)
             
         })
+       
         
 
     },
     methods:{
        showBacktop(position){
-
+           console.log(position)
        },
        loadmore(){
 
@@ -58,11 +64,11 @@ export default {
 </script>
 
 <style scoped>
-.detail{ position: relative; height: 100vh;}
+.detail{ position: relative; height: 100vh; }
 .navbarL{display: block; font-size: 28px; color: black; text-align: center;font-weight: 100;}
 .navbarC{display: flex;}
 .navbarC a{flex: 1; font-size: 16px; color: black;}
 .navbarC .navbarCon{color:#ff699c;}
 
-.scrollcon{ width: 100%; position: absolute; top: 0px; bottom: 49px;  overflow: hidden; }
+.scrollcon{ position: absolute; width: 100%; top: 44px; bottom: 0;background: white;  overflow: hidden;  z-index: 9; }
 </style>>

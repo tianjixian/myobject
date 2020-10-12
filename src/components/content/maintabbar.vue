@@ -38,5 +38,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style >
-.maintabbar{z-index: 100;}
+.maintabbar{z-index: 8;}
 </style>
