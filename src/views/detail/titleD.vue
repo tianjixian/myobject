@@ -28,13 +28,12 @@
             </div>
             <div class="shop02_3">
                 <div v-for="(score,scoreIndex) in goodsInfo02.score" :key="scoreIndex">
-                <span>{{score.name}}</span> 
-                <span class="color" :class="{bettercolor:goodsInfo02.isBetter}">{{score.score}}</span> 
-                <span class="color" :class="{bettercolor:goodsInfo02.isBetter}" v-show="score.score<4">低</span>
-                <span class="color" :class="{bettercolor:goodsInfo02.isBetter}" v-show="score.score>=4&&score.score<=4.5">中</span>
-                <span class="color" :class="{bettercolor:goodsInfo02.isBetter}" v-show="score.score>4.5">高</span>
-            </div>
-                
+                    <span>{{score.name}}</span> 
+                    <span class="color num" :class="{bettercolor:score.score>4.6}">{{score.score}}</span> 
+                    <span class="color" :class="{bettercolor:score.score>4.6}" v-show="score.score<4">低</span>
+                    <span class="color" :class="{bettercolor:score.score>4.6}" v-show="score.score>=4&&score.score<=4.6">中</span>
+                    <span class="color" :class="{bettercolor:score.score>4.6}" v-show="score.score>4.6">高</span>
+                </div> 
             </div>
         </div>
         <div>
@@ -54,7 +53,7 @@ export default {
     },
     data(){
         return {
-          
+          class:false
         }
     },
     computed:{
@@ -107,5 +106,6 @@ export default {
 .shop02_3>div{text-align: left; font-size: 14px; width: 100%;}
 .shop02_3>div span{display: inline-block;}
 .color{color: green;}
+.num{width: 30px; text-align: center;}
 .bettercolor{ color: red!important;}
 </style>

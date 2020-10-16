@@ -4,6 +4,7 @@
       <scroll class="scrollcon" ref="scroll" :probeType="3" :click="true" :pullUpLoad="true" @showBacktop="showBacktop" @loadmore="loadmore" >
          <mainswiper :images="goodsInfo.topImages"></mainswiper>
           <titleD :goodsInfo02="goodsInfo"></titleD>
+          <imgD :images='img'></imgD>
       </scroll>
   </div>
 </template>
@@ -13,6 +14,7 @@ import navbarD from '@/views/detail/navbarD.vue';
 import scroll from '@/components/common/scroll.vue'
 import mainswiper from '@/views/detail/mainswiper.vue';
 import titleD from '@/views/detail/titleD.vue';
+import imgD from '@/views/detail/imgD.vue';
 import {detail01,goods} from '@/network/detail.js'
 
 export default {
@@ -21,13 +23,15 @@ export default {
         return{
            id:null,
            goodsInfo:{},
+           img:[]
         }
     },
     components:{
         navbarD,
         scroll,
         mainswiper,
-        titleD
+        titleD,
+        imgD
     },
     created(){
         // 获取iid
@@ -38,7 +42,9 @@ export default {
             const data=res.data.result
             // 获取封装成一个对象goods的数据
             this.goodsInfo=new goods(data.itemInfo,data.columns,data.shopInfo)
-            console.log(data.shopInfo)
+            //获取详情图
+            this.img=data.detailInfo.detailImage
+            console.log(this.img)
             
         })
        
