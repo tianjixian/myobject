@@ -4,7 +4,9 @@
       <scroll class="scrollcon" ref="scroll" :probeType="3" :click="true" :pullUpLoad="true" @showBacktop="showBacktop" @loadmore="loadmore" >
          <mainswiper :images="goodsInfo.topImages"></mainswiper>
           <titleD :goodsInfo02="goodsInfo"></titleD>
-          <imgD :images='img'></imgD>
+          <!-- <imgD :images='img'></imgD> -->
+          <parameterD :parameter0="parameter"></parameterD>
+          <commentsD></commentsD>
       </scroll>
   </div>
 </template>
@@ -15,6 +17,8 @@ import scroll from '@/components/common/scroll.vue'
 import mainswiper from '@/views/detail/mainswiper.vue';
 import titleD from '@/views/detail/titleD.vue';
 import imgD from '@/views/detail/imgD.vue';
+import parameterD from '@/views/detail/parameterD.vue';
+import commentsD from '@/views/detail/commentsD.vue';
 import {detail01,goods} from '@/network/detail.js'
 
 export default {
@@ -23,7 +27,8 @@ export default {
         return{
            id:null,
            goodsInfo:{},
-           img:[]
+           img:[],
+           parameter:null
         }
     },
     components:{
@@ -31,7 +36,9 @@ export default {
         scroll,
         mainswiper,
         titleD,
-        imgD
+        imgD,
+        parameterD,
+        commentsD
     },
     created(){
         // 获取iid
@@ -44,8 +51,8 @@ export default {
             this.goodsInfo=new goods(data.itemInfo,data.columns,data.shopInfo)
             //获取详情图
             this.img=data.detailInfo.detailImage
-            console.log(this.img)
-            
+            this.parameter=data.itemParams
+            console.log(data)
         })
        
         
@@ -53,7 +60,7 @@ export default {
     },
     methods:{
        showBacktop(position){
-           console.log(position)
+        //    console.log(position)
        },
        loadmore(){
 

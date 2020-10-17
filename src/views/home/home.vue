@@ -76,7 +76,7 @@ export default {
   mounted(){
     this.$bus.$on('imgload01',()=>{
        this.$refs.scroll&&this.$refs.scroll.scroll.refresh()
-      //  console.log("图片加载执行refresh函数")
+      //  console.log("图片加载执行refresh函数") 
     })
 
    

@@ -29,10 +29,10 @@
             <div class="shop02_3">
                 <div v-for="(score,scoreIndex) in goodsInfo02.score" :key="scoreIndex">
                     <span>{{score.name}}</span> 
-                    <span class="color num" :class="{bettercolor:score.score>4.6}">{{score.score}}</span> 
+                    <span class="color num" :class="{bettercolor:score.score>4.7}">{{score.score}}</span> 
                     <span class="color" :class="{bettercolor:score.score>4.6}" v-show="score.score<4">低</span>
-                    <span class="color" :class="{bettercolor:score.score>4.6}" v-show="score.score>=4&&score.score<=4.6">中</span>
-                    <span class="color" :class="{bettercolor:score.score>4.6}" v-show="score.score>4.6">高</span>
+                    <span class="color" :class="{bettercolor:score.score>4.7}" v-show="score.score>=4&&score.score<=4.7">中</span>
+                    <span class="color" :class="{bettercolor:score.score>4.7}" v-show="score.score>4.7">高</span>
                 </div> 
             </div>
         </div>
@@ -71,12 +71,8 @@ export default {
             
         }
     },
-    created(){
-        
-    },
-    updated(){
-      
-    }
+    created(){},
+    updated(){}
 
 }
 </script>
@@ -103,9 +99,9 @@ export default {
 .shop02_1 span{display: inline-block; width: 100%;font-size: 14px;}
 .shop02_2 span{display: inline-block; width: 100%;font-size: 14px;}
 .shop02_3{ width: 40%!important;}
-.shop02_3>div{text-align: left; font-size: 14px; width: 100%;}
-.shop02_3>div span{display: inline-block;}
+.shop02_3>div{text-align: left; font-size: 14px; width: 100%; height: 25px;}
+.shop02_3>div span{display: inline-block; font-size: 14px;}
 .color{color: green;}
-.num{width: 30px; text-align: center;}
+.num{width: 52px; text-align: center;}
 .bettercolor{ color: red!important;}
 </style>
