@@ -1,6 +1,6 @@
 <template>
-  <div class="goodlist">
-      <div class="gooditeam01" v-for="(item,index) in goodslist" :key='index'  @click="indetail(index)">
+  <div class="goodlist" >
+      <!-- <div class="gooditeam01" v-for="(item,index) in goodslist" :key='index'  @click="indetail(index)">
           <a target="_blank">
             <img :src="item.show.img" alt="" @load="imgload">
             <div class="gooditeam02">
@@ -9,41 +9,36 @@
                 <span class="cfav">{{item.cfav}}</span>
             </div>
           </a>
-      </div>
+      </div> -->
+      <goodlistchild v-for="(item,index) in goodslist" :key='index' :product='item' :index0='index'  />
   </div>
+
 </template>
 
 <script>
+import goodlistchild from '@/components/content/goodlistchild.vue'
+
 export default {
     name:'goodlist',
     props:{
         goodslist:{
             type:Array
-        }
+        },
+    },
+    components:{
+        goodlistchild
     },
     methods:{
-        imgload(){
-            this.$bus.$emit('imgload01')
-            
-        },
-        indetail(index){
-            this.$router.push("/detail/"+this.goodslist[index].iid)
-           
+       
+    },
+    computed:{
+        showimages(){
+            // return this.item.show.img||this.item.images
         }
-        
     }
 }
 </script>
 
 <style scoped>
 .goodlist{ display: flex; width: 100%;flex-wrap: wrap; justify-content: space-around;padding: 2px; }
-.gooditeam01{width: 48%; }
-.gooditeam01 a{ display: block;}
-.gooditeam01 img{ width: 100%;}
-.gooditeam02{ text-align: center;}
-.gooditeam02 p{ display: block; font-size: 16px; height: 30px; line-height: 30px; white-space: nowrap;
-    text-overflow: ellipsis;overflow: hidden;word-break: break-all;}
-.gooditeam02 span{ height: 30px; line-height: 30px;font-size: 16px; display: inline-block; padding: 0 5px;}
-.gooditeam02 .price{  color:#ff699c}
-.gooditeam02 .cfav{ padding-left: 25px; background: url(../../assets/img/collect_icon.png) no-repeat left center; background-size: 25px 25px;margin-left: 10px;}
 </style>

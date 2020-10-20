@@ -1,4 +1,4 @@
-import {request} from './request.js'
+import {request,request01} from './request.js'
 
 export function detail01(iid){
     return request({
@@ -8,7 +8,6 @@ export function detail01(iid){
         }
     })
 }
-
 // 整合请求数据
 export class goods{
     constructor(itemInfo,columns,shopinfo){
@@ -25,4 +24,10 @@ export class goods{
         this.cGoods=shopinfo.cGoods;
         this.score=shopinfo.score;
     }
+}
+// 请求推荐数据
+export function recommend00(){
+    return request({
+        url:'/recommend'
+    })
 }

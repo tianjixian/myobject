@@ -6,7 +6,8 @@
           <titleD :goodsInfo02="goodsInfo"></titleD>
           <!-- <imgD :images='img'></imgD> -->
           <parameterD :parameter0="parameter"></parameterD>
-          <commentsD></commentsD>
+          <commentsD :commentsD='comments'></commentsD>
+          <goodlist :goodslist='recomments'></goodlist>
       </scroll>
   </div>
 </template>
@@ -19,7 +20,9 @@ import titleD from '@/views/detail/titleD.vue';
 import imgD from '@/views/detail/imgD.vue';
 import parameterD from '@/views/detail/parameterD.vue';
 import commentsD from '@/views/detail/commentsD.vue';
-import {detail01,goods} from '@/network/detail.js'
+import goodlist from '@/components/content/goodlist.vue';
+import {detail01,goods,recommend00} from '@/network/detail.js';
+import {mixin} from '@/common/mixin.js'
 
 export default {
     name:'detail',
@@ -28,9 +31,12 @@ export default {
            id:null,
            goodsInfo:{},
            img:[],
-           parameter:null
+           parameter:null,
+           comments:{},
+           recomments:[]
         }
     },
+    mixins: [mixin],
     components:{
         navbarD,
         scroll,
@@ -38,7 +44,8 @@ export default {
         titleD,
         imgD,
         parameterD,
-        commentsD
+        commentsD,
+        goodlist
     },
     created(){
         // 获取iid
@@ -51,8 +58,18 @@ export default {
             this.goodsInfo=new goods(data.itemInfo,data.columns,data.shopInfo)
             //获取详情图
             this.img=data.detailInfo.detailImage
+            // 获取参数信息
             this.parameter=data.itemParams
-            console.log(data)
+            // 获取评论信息
+            if(data.rate.cRate!==0){
+                this.comments=data.rate.list[0]
+            }
+            
+            // console.log(data)
+        })
+        recommend00().then(res=>{
+            this.recomments=res.data.data.list
+            console.log(this.recomments)
         })
        
         

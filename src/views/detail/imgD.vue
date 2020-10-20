@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="img" v-show="images.length!=0" v-for="(img01,index01) in images" :key="index01">
+    <div class="img" v-show="images.length!=0" v-for="(img01,index01) in images" :key="index01+1">
       <!-- <h5>{{img01.key}}</h5> -->
-      <img @load="imageload" v-for="(img02,index02) in img01.list" :key="index02" :src="img02" alt="">
+      <img @load="imageload" v-for="(img02,index02) in img01.list" :key="index02+2" :src="img02" alt="">
     </div>
       
   </div>
