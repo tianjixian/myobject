@@ -145,13 +145,14 @@ export default {
   },
   //2进入首页执行的记录
   activated(){
+    this.$refs.scroll.scroll.refresh()
     this.$refs.scroll.scroll.scrollTo(0,this.scrollleave,0)
-     this.$refs.scroll.scroll.refresh()
-    
+    // alert("设置了坐标值"+this.scrollleave)
   },
   //3离开首页的记录
   deactivated(){
     this.scrollleave=this.$refs.scroll.scroll.y
+    // alert("记录了坐标值"+this.scrollleave)
   }
   
 }

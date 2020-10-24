@@ -10,7 +10,7 @@
             </div>
           </a>
       </div> -->
-      <goodlistchild v-for="(item,index) in goodslist" :key='index' :product='item' :index0='index'  />
+      <goodlistchild v-for="(item,index) in goodslist" :key='index' :product='item' />
   </div>
 
 </template>
@@ -29,12 +29,10 @@ export default {
         goodlistchild
     },
     methods:{
-       
+    
     },
     computed:{
-        showimages(){
-            // return this.item.show.img||this.item.images
-        }
+       
     }
 }
 </script>

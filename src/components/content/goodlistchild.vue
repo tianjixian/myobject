@@ -1,5 +1,5 @@
 <template>
-    <div class="gooditeam01" @click="indetail(index0)"  >
+    <div class="gooditeam01" @click="indetail"  >
         <a target="_blank">
         <img :src="showimg" alt="" @load="imgload">
         <div class="gooditeam02">
@@ -29,14 +29,17 @@ export default {
         imgload(){
             this.$bus.$emit('imgload01')
         },
-         indetail(index){
-            this.$router.push("/detail/"+this.goodslist[index].iid)
-        } 
+        indetail(){
+            this.$router.push("/detail/"+this.product.iid)
+            
+        }, 
     },
     computed:{
         showimg(){
-            return this.product.show.img||this.product.image
-        }
+            return this.product.image || this.product.show.img
+        },
+        
+        
     }
 }
 </script>
