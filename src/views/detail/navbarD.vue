@@ -26,6 +26,7 @@ export default {
     methods:{
         navbarCon02(index){
             this.navbarCon=index
+            this.$emit("navClick",index)
         },
         navbarL(){
             this.$router.back()

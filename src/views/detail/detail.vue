@@ -1,13 +1,13 @@
 <template>
   <div class="detail">
-      <navbarD></navbarD>
+      <navbarD @navClick="navClick"></navbarD>
       <scroll class="scrollcon" ref="scroll" :probeType="3" :click="true" :pullUpLoad="true" @showBacktop="showBacktop" @loadmore="loadmore" >
          <mainswiper :images="goodsInfo.topImages"></mainswiper>
           <titleD :goodsInfo02="goodsInfo"></titleD>
-          <!-- <imgD :images='img'></imgD> -->
-          <parameterD :parameter0="parameter"></parameterD>
-          <commentsD :commentsD='comments'></commentsD>
-          <goodlist :goodslist='recomments'></goodlist>
+          <imgD :images='img' @imageload="imageload"></imgD>
+          <parameterD ref="parameterD" :parameter0="parameter"></parameterD>
+          <commentsD ref="commentsD" :commentsD='comments'></commentsD>
+          <goodlist ref="goodlist" :goodslist='recomments'></goodlist>
       </scroll>
   </div>
 </template>
@@ -26,16 +26,6 @@ import {mixin} from '@/common/mixin.js'
 
 export default {
     name:'detail',
-    data(){
-        return{
-           id:null,
-           goodsInfo:{},
-           img:[],
-           parameter:null,
-           comments:{},
-           recomments:[]
-        }
-    },
     mixins: [mixin],
     components:{
         navbarD,
@@ -46,6 +36,17 @@ export default {
         parameterD,
         commentsD,
         goodlist
+    },
+    data(){
+        return{
+           id:null,
+           goodsInfo:{},
+           img:[],
+           parameter:null,
+           comments:{},
+           recomments:[],
+           navscroll:[]
+        }
     },
     created(){
         // 获取iid
@@ -65,23 +66,39 @@ export default {
                 this.comments=data.rate.list[0]
             }
             
-            // console.log(data)
+           
         })
         recommend00().then(res=>{
             this.recomments=res.data.data.list
             console.log(this.recomments)
         })
-       
-        
-
     },
+    updated(){},
     methods:{
        showBacktop(position){
-        //    console.log(position)
+           if(position==this.navscroll[1]){
+               
+           }
        },
        loadmore(){
 
+       },
+    //    监听详情页大图加载完成之后重新获取better-scroll的高度，解决下滑不全bug
+       imageload(){
+         this.$refs.scroll.scroll.refresh()
+         //navscroll的offsettop获取
+        this.navscroll=[]
+        this.navscroll.push(0)
+        this.navscroll.push(this.$refs.parameterD.$el.offsetTop)
+        this.navscroll.push(this.$refs.commentsD.$el.offsetTop)
+        this.navscroll.push(this.$refs.goodlist.$el.offsetTop)
+       },
+    //    导航接收子组件的点击
+       navClick(index){
+           this.$refs.scroll.scroll.scrollTo(0,-this.navscroll[index],100)
+
        }
+       
     }
    
 }
