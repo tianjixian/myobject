@@ -1,6 +1,6 @@
 <template>
   <div class="detail">
-      <navbarD @navClick="navClick"></navbarD>
+      <navbarD ref="navbarD" @navClick="navClick"></navbarD>
       <scroll class="scrollcon" ref="scroll" :probeType="3" :click="true" :pullUpLoad="true" @showBacktop="showBacktop" @loadmore="loadmore" >
          <mainswiper :images="goodsInfo.topImages"></mainswiper>
           <titleD :goodsInfo02="goodsInfo"></titleD>
@@ -45,7 +45,8 @@ export default {
            parameter:null,
            comments:{},
            recomments:[],
-           navscroll:[]
+           navscroll:[],
+           positionindex:0
         }
     },
     created(){
@@ -76,8 +77,11 @@ export default {
     updated(){},
     methods:{
        showBacktop(position){
-           if(position==this.navscroll[1]){
-               
+           for(let i=0;i<this.navscroll.length-1;i++){
+               if((this.positionindex!==i)&&(-position.y>=this.navscroll[i]&&-position.y<this.navscroll[i+1])){
+                   this.positionindex=i
+                    this.$refs.navbarD.navbarCon=i
+               }
            }
        },
        loadmore(){
@@ -92,11 +96,12 @@ export default {
         this.navscroll.push(this.$refs.parameterD.$el.offsetTop)
         this.navscroll.push(this.$refs.commentsD.$el.offsetTop)
         this.navscroll.push(this.$refs.goodlist.$el.offsetTop)
+        this.navscroll.push(Number.MAX_VALUE)
        },
     //    导航接收子组件的点击
        navClick(index){
            this.$refs.scroll.scroll.scrollTo(0,-this.navscroll[index],100)
-
+           
        }
        
     }
