@@ -9,6 +9,7 @@
           <commentsD ref="commentsD" :commentsD='comments'></commentsD>
           <goodlist ref="goodlist" :goodslist='recomments'></goodlist>
       </scroll>
+      <backtop  @click.native="backtop" v-if="isShowBacktop"></backtop>
   </div>
 </template>
 
@@ -21,6 +22,7 @@ import imgD from '@/views/detail/imgD.vue';
 import parameterD from '@/views/detail/parameterD.vue';
 import commentsD from '@/views/detail/commentsD.vue';
 import goodlist from '@/components/content/goodlist.vue';
+import backtop from '@/components/common/backtop.vue'
 import {detail01,goods,recommend00} from '@/network/detail.js';
 import {mixin} from '@/common/mixin.js'
 
@@ -35,7 +37,8 @@ export default {
         imgD,
         parameterD,
         commentsD,
-        goodlist
+        goodlist,
+        backtop
     },
     data(){
         return{
@@ -46,7 +49,9 @@ export default {
            comments:{},
            recomments:[],
            navscroll:[],
-           positionindex:0
+           positionindex:0,
+           isShowBacktop:false
+           
         }
     },
     created(){
@@ -83,6 +88,8 @@ export default {
                     this.$refs.navbarD.navbarCon=i
                }
            }
+        //    回到顶部效果
+           this.isShowBacktop=-position.y>1000
        },
        loadmore(){
 
@@ -102,7 +109,11 @@ export default {
        navClick(index){
            this.$refs.scroll.scroll.scrollTo(0,-this.navscroll[index],100)
            
-       }
+       },
+    //    回到顶部
+        backtop(){
+            this.$refs.scroll.scroll.scrollTo(0,0,500)
+        }
        
     }
    

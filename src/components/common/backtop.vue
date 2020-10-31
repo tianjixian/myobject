@@ -9,6 +9,6 @@ export default {
 </script>
 
 <style>
-.backtop{position: fixed; right: 5px; bottom: 55px; width: 50px; height: 50px;}
+.backtop{position: fixed; right: 5px; bottom: 55px; width: 50px; height: 50px; z-index: 999;}
 .backtop img{ width: 100%; height: 100%;}
 </style>
