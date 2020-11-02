@@ -10,6 +10,7 @@
           <goodlist ref="goodlist" :goodslist='recomments'></goodlist>
       </scroll>
       <backtop  @click.native="backtop" v-if="isShowBacktop"></backtop>
+      <buttonD @addgoods="addgoods"/>
   </div>
 </template>
 
@@ -22,7 +23,8 @@ import imgD from '@/views/detail/imgD.vue';
 import parameterD from '@/views/detail/parameterD.vue';
 import commentsD from '@/views/detail/commentsD.vue';
 import goodlist from '@/components/content/goodlist.vue';
-import backtop from '@/components/common/backtop.vue'
+import backtop from '@/components/common/backtop.vue';
+import buttonD from '@/views/detail/buttonD.vue';
 import {detail01,goods,recommend00} from '@/network/detail.js';
 import {mixin} from '@/common/mixin.js'
 
@@ -38,7 +40,8 @@ export default {
         parameterD,
         commentsD,
         goodlist,
-        backtop
+        backtop,
+        buttonD
     },
     data(){
         return{
@@ -76,11 +79,11 @@ export default {
         })
         recommend00().then(res=>{
             this.recomments=res.data.data.list
-            console.log(this.recomments)
         })
     },
     updated(){},
     methods:{
+        // 回到顶部
        showBacktop(position){
            for(let i=0;i<this.navscroll.length-1;i++){
                if((this.positionindex!==i)&&(-position.y>=this.navscroll[i]&&-position.y<this.navscroll[i+1])){
@@ -91,6 +94,7 @@ export default {
         //    回到顶部效果
            this.isShowBacktop=-position.y>1000
        },
+    //    下拉加载更多
        loadmore(){
 
        },
@@ -113,6 +117,16 @@ export default {
     //    回到顶部
         backtop(){
             this.$refs.scroll.scroll.scrollTo(0,0,500)
+        },
+        addgoods(){
+            const product={};
+            product.id=this.id;
+            product.title=this.goodsInfo.title;
+            product.desc=this.goodsInfo.desc;
+            product.img=this.goodsInfo.topImages[0];
+            product.price=this.goodsInfo.highNowPrice;
+            // 添加商品到购物车
+            this.$store.commit("addcar",product)
         }
        
     }
@@ -121,7 +135,7 @@ export default {
 </script>
 
 <style scoped>
-.detail{ position: relative; height: 100vh; }
+.detail{ position: relative; height: calc(100vh - 49px); }
 .navbarL{display: block; font-size: 28px; color: black; text-align: center;font-weight: 100;}
 .navbarC{display: flex;}
 .navbarC a{flex: 1; font-size: 16px; color: black;}

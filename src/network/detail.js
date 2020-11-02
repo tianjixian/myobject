@@ -16,6 +16,7 @@ export class goods{
         this.highNowPrice=itemInfo.highNowPrice;
         this.highPrice=itemInfo.highPrice;
         this.itemInfo=itemInfo;
+        this.desc=itemInfo.desc;
         this.columns=columns;
         this.services=shopinfo.services;
         this.shopLogo=shopinfo.shopLogo;
@@ -23,6 +24,7 @@ export class goods{
         this.cSells=shopinfo.cSells;
         this.cGoods=shopinfo.cGoods;
         this.score=shopinfo.score;
+       
     }
 }
 // 请求推荐数据
