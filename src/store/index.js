@@ -11,8 +11,19 @@ const store=new Vuex.Store({
     },
     mutations:{
         addcar(state,payload){
-            state.cartlist.push(payload)
-            console.log(state.cartlist[0])
+            let oldProduct=null;
+            for(let item of state.cartlist){
+                if(item.id === payload.id){
+                    oldProduct=item
+                }
+            }
+            if(oldProduct){
+                oldProduct.count += 1
+            }else{
+                payload.count=1
+                state.cartlist.push(payload)
+            }
+            console.log(state.cartlist[0].count)
         }
     }
 })
