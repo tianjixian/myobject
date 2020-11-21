@@ -18,6 +18,7 @@ export default {
 </script>
 
 <style scoped>
-    .checkbutton img{ width: 15px; height: 15px; border-radius: 50%; border: 1px solid #999; margin-top: 36px; background: white;}
+.checkbutton{position: relative; height: 100%;}
+    .checkbutton img{position: relative; top: 50%; width: 16px; height: 16px; border-radius: 50%; border: 1px solid #999;display: block;  margin-top: -8px; background: white;}
     .oncheckbutton img{ background: red;border: 1px solid red;}
 </style>>

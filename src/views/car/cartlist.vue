@@ -1,6 +1,6 @@
 <template>
   <div class="cartlist">
-    <scroll class="scroll" ref="scroll">
+    <scroll class="scroll" ref="scroll" :click="true" >
         <cart-list-item v-for="(item,index) in cartlistData" :key="index" :product='item'></cart-list-item>
     </scroll>
   </div>
@@ -27,6 +27,6 @@ export default {
 </script>
 
 <style scoped>
-.cartlist{ height: calc(100% - 44px - 49px);}
-.scroll{ height:100%; width: 100%;margin-top: 44px;}
+.cartlist{ width: 100%;}
+.scroll{ height:100%; width: 100%;margin-top: 44px; overflow: hidden;}
 </style>

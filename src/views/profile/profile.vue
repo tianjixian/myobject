@@ -1,8 +1,12 @@
 <template>
-<div>
+<div class="fme">
     <navbar class="navbarP"><div slot="center">我的</div></navbar>
-    <div class="me" @click="click01">5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555
-      555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555</div>
+    <div class="me" @click="click01">555555555555555555555555
+      5555555555555555555555555555555555555555555555555555555
+      5555555555555555555555555555555555555555555555555555555
+      5555555555555555555555555555555555555555555555555555555
+      5555555555555555
+    </div>
 </div>
     
 </template>
@@ -17,7 +21,7 @@ export default {
   },
   methods:{
     click01(){
-      alert(666)
+      
     }
   }
 }
@@ -25,6 +29,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.fme{width: 100%;}
 .navbarP div{ color: black;}
-.me{height: 1000px; width: 100%;}
+.me{height: 1000px; width: 100%; word-break: break-all;}
 </style>

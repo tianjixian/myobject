@@ -14,7 +14,6 @@ export default {
     methods:{
       addgoods(){
         this.$emit("addgoods")
-        alert("已添加购物车了")
       }
     }
 }

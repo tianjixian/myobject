@@ -127,7 +127,9 @@ export default {
             product.price=this.goodsInfo.highNowPrice;
             // 添加商品到购物车
             // this.$store.commit("addcar",product)
-            this.$store.dispatch('addcar',product)
+            this.$store.dispatch('addcar',product).then(res=>{
+                this.$toast.show(res,1000) 
+            })
         }
        
     }

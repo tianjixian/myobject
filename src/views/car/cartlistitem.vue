@@ -1,6 +1,6 @@
 <template>
-  <div class="cartlistitem cf" @click='checkclick'>
-      <checkbutton class="one" :ison='product.checked' ></checkbutton>
+  <div class="cartlistitem cf">
+      <checkbutton class="one" @click.native='checkclick' :ison='product.checked' ></checkbutton>
       <div class="two"><img :src="product.img" alt=""></div>
       <div class="three">
           <div class="title">{{product.title}}</div>
@@ -30,7 +30,6 @@ export default {
     },
     methods:{
         checkclick(){
-            alert("测试点击啊")
             this.product.checked=!this.product.checked
         }
     }
@@ -38,7 +37,7 @@ export default {
 </script>
 
 <style scoped>
-.cartlistitem{ height: 115px; background: white; padding: 10px 5px 10px 5px;  border-bottom:1px solid #dfe6e9 ;}
+.cartlistitem{ position: relative; z-index: 99999; height: 115px; background: white; padding: 10px 5px 10px 5px;  border-bottom:1px solid #dfe6e9 ;}
 .one{ float: left; width: 15px; height: 100%; margin-right: 2px;}
 .two{ float: left;width: 30%; height: 100%;}
 .two img{width: 100%; height: 100%;}
