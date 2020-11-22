@@ -1,7 +1,7 @@
 <template>
     <div class="gooditeam01" @click="indetail"  >
         <a target="_blank">
-        <img :src="showimg" alt="" @load="imgload">
+        <img v-lazy="showimg" alt="" @load="imgload">
         <div class="gooditeam02">
             <p>{{product.title}}</p>
             <span class="price">{{product.price}}</span>
