@@ -11,7 +11,7 @@ export function home02(type,page){
         url:'/home/data',
         params:{
             type,
-            page
+            page,
         }
     })
 }
